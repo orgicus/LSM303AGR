@@ -92,7 +92,7 @@ class LSM303AGR_MAG_Sensor
     {
       dev_i2c->beginTransmission(((uint8_t)(((address) >> 1) & 0x7F)));
       dev_i2c->write(RegisterAddr);
-      dev_i2c->endTransmission(false);
+      dev_i2c->endTransmission();
 
       dev_i2c->requestFrom(((uint8_t)(((address) >> 1) & 0x7F)), (byte) NumByteToRead);
 
@@ -121,7 +121,7 @@ class LSM303AGR_MAG_Sensor
       for (int i = 0 ; i < NumByteToWrite ; i++)
         dev_i2c->write(pBuffer[i]);
 
-      dev_i2c->endTransmission(true);
+      dev_i2c->endTransmission();
 
       return 0;
     }
